@@ -8,9 +8,14 @@
     "react-scripts": "1.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "scss-compile": "node-sass src/styles/scss/main.scss src/styles/css/style.css -w",
+    "start": "npm run scss-compile | npm run start:react",
+    "start:react": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "node-sass": "^4.9.0"
   }
 }
