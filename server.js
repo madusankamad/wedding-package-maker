@@ -14,6 +14,15 @@ const router = express.Router();
 router.get('/', function(req, res) {
     res.json({ message: 'hooray! welcome to our api!' });
 });
+router.get('/magazine', function(req, res) {
+    res.json({ message: 'Magazine Price goes here.....' });
+});
+
+router.get('/enlargements', function(req, res) {
+    res.json({ message: 'Enlargement price goes here....' });
+});
+
+
 
 app.use('/api', router);
 
