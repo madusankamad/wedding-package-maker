@@ -11,7 +11,7 @@ app.get("/api/v1", (req,res)=>{
 });
 /*Routes*/
 app.get("*", (req,res)=>{
-    res.sendFile(path.join(__dirname, 'build/favicon.ico'));
+    res.sendFile(path.join(__dirname, 'build/index.html'));
 });
 
 
