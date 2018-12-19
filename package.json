@@ -19,7 +19,7 @@
     "eject": "react-scripts eject",
     "prod:server": "cross-env node server.js",
     "build:prod:server": "npm run build && npm run prod:server",
-    "postinstall": "npm run scss-compile-prod && npm run build",
+    "heroku-postbuild": "npm run scss-compile-prod && npm run build",
     "start": "npm run prod:server"
   },
   "devDependencies": {
