@@ -13,12 +13,13 @@
   "scripts": {
     "scss-compile": "cross-env node-sass src/styles/scss/main.scss src/styles/css/style.css -w",
     "scss-compile-prod": "cross-env node-sass src/styles/scss/main.scss src/styles/css/style.css",
-    "start:dev": "npm run scss-compile | npm run start:react",
+    "start:dev": "npm run scss-compile | npm run dev:proxy:server | npm run start:react",
     "start:react": "react-scripts start",
     "build": "cross-env react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "prod:server": "node server.js",
+    "dev:proxy:server": "cross-env PORT=9000 NODE_ENV=development npm run prod:server",
     "build:prod:server": "npm run build && npm run prod:server",
     "postinstall": "npm run scss-compile-prod && npm run build",
     "start": "npm run prod:server"
@@ -26,5 +27,6 @@
   "devDependencies": {
     "node-sass": "^4.9.0",
     "nodemon": "^1.18.9"
-  }
+  },
+  "proxy": "http://localhost:9000"
 }
