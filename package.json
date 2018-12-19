@@ -10,13 +10,15 @@
   },
   "scripts": {
     "scss-compile": "node-sass src/styles/scss/main.scss src/styles/css/style.css -w",
-    "start": "npm run scss-compile | npm run start:react",
+    "start:dev": "npm run scss-compile | npm run start:react",
     "start:react": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "prod:server": "node server.js",
-    "build:prod:server": "npm run build && npm run prod:server"
+    "build:prod:server": "npm run build && npm run prod:server",
+    "postinstall": "npm run build",
+    "start": "npm run prod:server"
   },
   "devDependencies": {
     "node-sass": "^4.9.0"
