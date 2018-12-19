@@ -7,7 +7,7 @@ const app = express();
 app.use(express.static(path.join(__dirname, 'build')));
 
 app.get("/api/v1", (req,res)=>{
-    res.send({"Hello": "Test"});
+    res.send("API IS Running");
 });
 /*Routes*/
 app.get("*", (req,res)=>{
