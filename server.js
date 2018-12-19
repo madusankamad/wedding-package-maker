@@ -2,15 +2,27 @@ const express = require('express');
 const path = require('path');
 const port = process.env.PORT || 8080;
 const app = express();
+const bodyParser = require('body-parser');
+// configure app to use bodyParser()
+// this will let us get the data from a POST
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+const router = express.Router();
+
+// test route to make sure everything is working (accessed at GET http://localhost:8080/api)
+router.get('/', function(req, res) {
+    res.json({ message: 'hooray! welcome to our api!' });
+});
+
+app.use('/api', router);
 
 /* Static Path */
 app.use(express.static(path.join(__dirname, 'build')));
 
-app.get("/api/v1", (req,res)=>{
-    res.send("API IS Running");
-});
+
 /*Routes*/
-app.get("*", (req,res)=>{
+app.use("*", (req,res)=>{
     res.sendFile(path.join(__dirname, 'build/index.html'));
 });
 
