@@ -3,21 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "cross-env": "^5.2.0",
     "express": "^4.16.4",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-scripts": "1.1.4"
   },
   "scripts": {
-    "scss-compile": "node-sass src/styles/scss/main.scss src/styles/css/style.css -w",
+    "scss-compile": "cross-env node-sass src/styles/scss/main.scss src/styles/css/style.css -w",
+    "scss-compile-prod": "cross-env node-sass src/styles/scss/main.scss src/styles/css/style.css",
     "start:dev": "npm run scss-compile | npm run start:react",
     "start:react": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "cross-env react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "prod:server": "node server.js",
+    "prod:server": "cross-env node server.js",
     "build:prod:server": "npm run build && npm run prod:server",
-    "postinstall": "npm run build",
+    "postinstall": "npm run scss-compile-prod && npm run build",
     "start": "npm run prod:server"
   },
   "devDependencies": {
