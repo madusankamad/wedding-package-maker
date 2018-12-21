@@ -15,7 +15,7 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload. Test
         </p>
           <button onClick={getMagazineInfo} value="get Magazine Info">Get Magazine Routes</button>
-          <button onClick={getEnlargementInfo} value="Enlargement Info">Get Enlargement Info</button>
+          <button onClick={getEnlargementInfo} value="Enlargement Info">Get Enlargement Info </button>
       </div>
     );
   }
