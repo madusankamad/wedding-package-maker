@@ -2,29 +2,34 @@
   "name": "wedding-package-maker",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "10.14.2",
+    "yarn": "1.12.3",
+    "npm": "6.4.1"
+  },
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.1.3",
     "express": "^4.16.4",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "react-scripts": "1.1.4",
+    "react-scripts": "2.1.1"
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "scss-compile": "cross-env node-sass src/styles/scss/main.scss src/styles/css/style.css -w",
-    "scss-compile-prod": "cross-env node-sass src/styles/scss/main.scss src/styles/css/style.css",
-    "start:dev": "npm run scss-compile | npm run dev:proxy:server | npm run start:react",
-    "start:react": "react-scripts start",
+    "dev:css:compile": "cross-env node-sass src/styles/scss/main.scss src/styles/css/style.css -w",
+    "prod:css:compile": "cross-env node-sass src/styles/scss/main.scss src/styles/css/style.css",
+    "start:dev": "npm run dev:css:compile | npm run dev:proxy:server | npm run client:react",
+    "client:react": "react-scripts start",
     "build": "cross-env react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "prod:server:build": "webpack --config webpack.server.config --mode production",
     "prod:server": "npm run prod:server:build && node server.bundle.js",
     "dev:proxy:server": "cross-env PORT=9000 NODE_ENV=development npm run prod:server",
-    "build:prod:server": "npm run build && npm run prod:server",
+    "prod:run": "npm run build && npm run prod:server",
     "postinstall": "npm run scss-compile-prod && npm run build && npm run prod:server:build",
     "start": "node server.bundle.js"
   },
@@ -46,5 +51,11 @@
     "webpack-cli": "^3.1.2",
     "webpack-node-externals": "^1.7.2"
   },
-  "proxy": "http://localhost:9000"
+  "proxy": "http://localhost:9000",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

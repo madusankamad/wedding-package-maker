@@ -1,10 +1,12 @@
 const express = require('express');
 const path = require('path');
 const port = process.env.PORT || 8080;
-const app = express();
 const bodyParser = require('body-parser');
 import magazineRouter from './appExpressServer/routes/magazin.routes';
 
+
+
+const app = express();
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({extended: true}));

@@ -14,8 +14,8 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-          <button onClick={getMagazineInfo} value="get Magazine Info"/>
-          <button onClick={getEnlargementInfo} value="Enlargement Info"/>
+          <button onClick={getMagazineInfo} value="get Magazine Info">Get Magazine Routes</button>
+          <button onClick={getEnlargementInfo} value="Enlargement Info">Get Enlargement Info</button>
       </div>
     );
   }
