@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const port = process.env.PORT || 8080;
 const bodyParser = require('body-parser');
-import magazineRouter from './appExpressServer/routes/magazin.routes';
+import magazineRouter from './Server/routes/magazin.routes';
 
 
 

@@ -30,7 +30,7 @@
     "prod:server": "npm run prod:server:build && node server.bundle.js",
     "dev:proxy:server": "cross-env PORT=9000 NODE_ENV=development npm run prod:server",
     "prod:run": "npm run build && npm run prod:server",
-    "postinstall": "npm run scss-compile-prod && npm run build && npm run prod:server:build",
+    "postinstall": "npm run prod:css:compile && npm run build && npm run prod:server:build",
     "start": "node server.bundle.js"
   },
   "devDependencies": {
@@ -47,7 +47,6 @@
     "cross-env": "^5.2.0",
     "node-sass": "^4.9.0",
     "nodemon": "^1.18.9",
-    "webpack": "^4.28.0",
     "webpack-cli": "^3.1.2",
     "webpack-node-externals": "^1.7.2"
   },
