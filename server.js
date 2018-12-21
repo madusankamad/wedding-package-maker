@@ -3,6 +3,8 @@ const path = require('path');
 const port = process.env.PORT || 8080;
 const app = express();
 const bodyParser = require('body-parser');
+import magazineRouter from './appExpressServer/routes/magazin.routes';
+
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({extended: true}));
@@ -14,9 +16,6 @@ const router = express.Router();
 router.get('/', function (req, res) {
     res.json({message: 'hooray! welcome to our api!'});
 });
-router.get('/magazine', function (req, res) {
-    res.json({message: 'Magazine Price goes here.....'});
-});
 
 router.get('/enlargements', function (req, res) {
     res.json({message: 'Enlargement price goes here....'});
@@ -24,13 +23,15 @@ router.get('/enlargements', function (req, res) {
 
 
 app.use('/api', router);
+app.use('/api/magazine', magazineRouter);
+
 
 if (process.env.NODE_ENV !== 'development') {
     /* Static Path */
-    app.use(express.static(path.join(__dirname, 'build')));
+    app.use(express.static(path.join(__dirname, '/build')));
 
     app.use("*", (req, res) => {
-        res.sendFile(path.join(__dirname, 'build/index.html'));
+        res.sendFile(path.join(__dirname, '/build/index.html'));
     });
 }
 else {

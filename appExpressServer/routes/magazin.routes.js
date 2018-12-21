@@ -1,11 +1,12 @@
-import {Router} from 'express';
-import {magazineSizes,magazinePriceById,magazinePaperTypes,magazinePaperPrice} from '../controller/magazine.controller';
+import express from 'express';
+const {magazineSizes,magazinePriceById,magazinePaperTypes,magazinePaperPrice} = require('../controller/magazine.controller');
 
-Router.get('/sizes',magazineSizes);
-Router.get('/:magazineId/price',magazinePriceById);
-Router.get('/papers',magazinePaperTypes);
-Router.get('/paper/:paperId/:paperSize/price',magazinePaperPrice);
+const magazineRouter = express.Router();
+magazineRouter.get('/sizes',magazineSizes);
+magazineRouter.get('/:magazineId/price',magazinePriceById);
+magazineRouter.get('/papers',magazinePaperTypes);
+magazineRouter.get('/paper/:paperId/:paperSize/price',magazinePaperPrice);
 
-export default Router
+export default magazineRouter
 
 

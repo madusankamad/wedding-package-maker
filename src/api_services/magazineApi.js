@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const getMagazineInfo = ()=>{
-    return axios.get('/api/magazine').then(response =>{console.log('magazine',response.data)});
+    return axios.get('/api/magazine/sizes').then(response =>{console.log('magazine',response.data)});
 };
 
 export const getEnlargementInfo = ()=>{

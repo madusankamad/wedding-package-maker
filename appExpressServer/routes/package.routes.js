@@ -1,11 +1,12 @@
-import {Router} from 'express';
+import express from 'express';
 import {allPackages,calculatePackagePrice} from '../controller/package.controller';
 
-Router.get('/all',allPackages);
-Router.post('/price',calculatePackagePrice);
+const packageRoutes = express.Router();
+packageRoutes.get('/all',allPackages);
+packageRoutes.post('/price',calculatePackagePrice);
 
 
 
-export default Router
+export default packageRoutes
 
 
