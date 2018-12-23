@@ -27,7 +27,7 @@
     "prod:server": "node server.bundle.js",
     "dev:proxy:server": "cross-env PORT=9000 NODE_ENV=development npm run prod:server",
     "prod:run": "npm run build && npm run prod:server",
-    "postinstall": "npm run prod:css:compile && npm run build && prod:server:build",
+    "postinstall": "npm run prod:css:compile && npm run build && npm run prod:server:build",
     "start": "npm run prod:server"
   },
   "devDependencies": {
