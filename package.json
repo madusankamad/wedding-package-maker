@@ -18,7 +18,7 @@
   "scripts": {
     "dev:css:compile": "cross-env node-sass src/styles/scss/main.scss src/styles/css/style.css -w",
     "prod:css:compile": "cross-env node-sass src/styles/scss/main.scss src/styles/css/style.css",
-    "start:dev": "npm run dev:css:compile | npm run dev:proxy:server | npm run client:react",
+    "start:dev": "npm run dev:css:compile | (npm run prod:server:build && npm run dev:proxy:server) | npm run client:react",
     "client:react": "react-scripts start",
     "build": "cross-env react-scripts build",
     "test": "react-scripts test --env=jsdom",
