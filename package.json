@@ -33,7 +33,10 @@
     "enzyme-adapter-react-16": "^1.7.1",
     "enzyme-to-json": "^3.3.5",
     "express": "^4.16.4",
+    "jquery": "^3.3.1",
     "lodash": "^4.17.11",
+    "popper.js": "^1.14.6",
+    "prop-types": "^15.6.2",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-router": "^4.3.1",
@@ -48,13 +51,14 @@
     "build": "cross-env react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "prod:server:build": "cross-env webpack --config webpack.server.config",
+    "prod:server:build": "cross-env webpack --config webpack.server.config --mode production",
+    "prod:server:build:development": "cross-env webpack --config webpack.server.config --mode development",
     "prod:server": "node server.bundle.js",
     "dev:proxy:server": "cross-env PORT=9000 NODE_ENV=development npm run prod:server",
     "prod:run": "npm run build && npm run prod:server",
     "postinstall": "npm run build && npm run prod:server:build",
     "start": "npm run prod:server",
-    "start:local": "(npm run prod:server:build && npm run dev:proxy:server) | npm run client:react"
+    "start:local": "npm run prod:server:build:development && npm run dev:proxy:server | npm run client:react"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",

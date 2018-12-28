@@ -1,4 +1,4 @@
-import {getMagazineInfo} from './magazineApi';
+import {getMagazineInfo} from './albumApi';
 
 
 it('shoud get Magazine Data', () => {
