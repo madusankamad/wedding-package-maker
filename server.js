@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const port = process.env.PORT || 8080;
 const bodyParser = require('body-parser');
-import magazineRoutes from "./Server/routes/magazin.routes";
+import albumRoutes from "./Server/routes/album.routes";
 
 
 
@@ -25,7 +25,7 @@ router.get('/enlargements', function (req, res) {
 
 
 app.use('/api', router);
-app.use('/api/magazine', magazineRoutes);
+app.use('/api/album', albumRoutes);
 
 
 if (process.env.NODE_ENV !== 'development') {
@@ -43,7 +43,7 @@ else {
 
 app.listen(port);
 
-console.log("Server is running... Port=>", port);
+console.log("Server is running... Port=>", port, 'Environment=>', process.env.NODE_ENV);
 
 
 
