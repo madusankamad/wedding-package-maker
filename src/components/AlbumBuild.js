@@ -1,12 +1,28 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 import {getPricingInformation} from '../api/albumApi';
+import {SummaryBox} from './SummaryBox'
+import AlbumComponent from "./AlbumComponent";
 
-export class AlbumBuild extends Component{
+export class AlbumBuild extends Component {
+    constructor() {
+        super();
+        this.state = {
+            allAlbumInformation: {}
+    }
+    }
 
-    render(){
-        return(<div>
-            Album Build Page
-            <button onClick={getPricingInformation}>Get Price Info</button>
+    componentWillMount() {
+        getPricingInformation().then(response => this.setState({allAlbumInformation: response.data}));
+    }
+
+
+    render() {
+        return (<div className="row">
+            <div className="col-md-8">Left: Album Build Page
+                <AlbumComponent albumInfo={this.state.allAlbumInformation}/>
+            </div>
+            <div className="col-md-4"><SummaryBox/>
+            </div>
         </div>);
     }
 }

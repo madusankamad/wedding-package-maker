@@ -14,15 +14,41 @@ export const magazinePaperPrice = (req, res) => {
 };
 
 export const getAlbumPricingInfo = (req, res) => {
-    const ProcessedData = priceResultMapper(pricingInfo);
+    const searchId = req.params.id;
+    let ProcessedData = [];
+    if(searchId==='all'){
+        ProcessedData = filterPriceByParam('',"all");
+        //console.log(searchId,ProcessedData);
+    }
+    else{
+        ProcessedData = filterPriceByParam(searchId,"sizeid");
+        //console.log(searchId,ProcessedData);
+    }
+
     //console.log('getAlbumPricingInfo => Req : ',req.params,ProcessedData);
     res.json(ProcessedData);
 };
 
+//This will filter the data from price result array;
+const filterPriceByParam = (paramValue,type) =>{
+    let filterdResult = [];
+    switch (type) {
+        case "sizeid":
+            filterdResult =  pricingInfo.filter(info=>info.sizeid===paramValue);
+            break;
+        case "all":
+            filterdResult =  pricingInfo;
+            break;
+        default :
+            filterdResult =  pricingInfo;
+    }
+    return(priceResultMapper(filterdResult));
+
+};
 
 const priceResultMapper = (resultArray) => {
-
     const processedResult = {};
+    const albumSizeIds = [];
     resultArray.map(result => {
         const { width,
                 height,
@@ -63,8 +89,10 @@ const priceResultMapper = (resultArray) => {
             paperPrice: paperprice,
             binding: binding
         }
+        //adding albumID List
+        albumSizeIds.push(result.sizeid);
     });
 
-    return processedResult;
+    return {albumSizes: albumSizeIds, pricingInfo: processedResult};
 
 };

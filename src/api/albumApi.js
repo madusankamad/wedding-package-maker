@@ -8,8 +8,8 @@ export const getMagazineInfo = ()=>{
 export const getPricingInformation = (sizeId='all')=>{
     let id = 'all';
     typeof sizeId === "string"? id=sizeId : id='all';
-    console.log( typeof sizeId, id);
-    return axios.get('/api/album/'+id+'/priceInfo').then(response =>{console.log('magazine',response.data)});
+    //console.log( typeof sizeId, id);
+    return axios.get('/api/album/'+id+'/priceInfo');
 };
 
 export const getEnlargementInfo = ()=>{
