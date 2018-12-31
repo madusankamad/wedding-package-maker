@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 
 const router = express.Router();
 
-// test route to make sure everything is working (accessed at GET http://localhost:<port>/api)
+// test route to make  sure everything is working ( accessed at GET http://localhost:<port>/api)
 router.get('/', function (req, res) {
     res.json({message: 'hooray! welcome to our api!'});
 });
@@ -31,7 +31,6 @@ app.use('/api/album', albumRoutes);
 if (process.env.NODE_ENV !== 'development') {
     /* Static Path */
     app.use(express.static(path.join(__dirname, 'build')));
-
     app.use("*", (req, res) => {
         res.sendFile(path.join(__dirname, 'build/index.html'));
     });
